@@ -1,23 +1,19 @@
-import { Component } from '../core/component'
-import {apiService} from "../services/api.service";
-import {TransformService} from "../services/transform.service";
+import { Component } from "../core/component";
+import { apiService } from "../services/api.service";
+import { TransformService } from "../services/transform.service";
 import moment from "moment";
-import {loader} from "../index";
-
+import { loader } from "../index";
 
 export class PostsComponent extends Component {
   constructor(id) {
-    super(id)
-    console.log("Posts");
+    super(id);
   }
 
   async onShow() {
-    console.log("asdasd");
     loader.show();
     let fbData = await apiService.fetchPosts();
     const posts = TransformService.fbObjectToArray(fbData);
-    const html = posts.map(post => renderPost(post));
-    console.log(html.join(" "));
+    const html = posts.map((post) => renderPost(post));
     loader.hide();
     this.$el.insertAdjacentHTML("afterbegin", html.join(" "));
   }
@@ -25,13 +21,11 @@ export class PostsComponent extends Component {
   onHide() {
     this.$el.innerHTML = "";
   }
-
 }
 
 function renderPost(post) {
-  moment().locale();
   return `
-    <div class="panel">
+    <div class="panel" data-id = ${post.id}>
         <div class="panel-head">
           <p class="panel-title">${post.title}</p>
           <ul class="tags">
@@ -45,19 +39,13 @@ function renderPost(post) {
           <small>${post.date.split("/").join(".")}</small>
         </div>
       </div>
-    `
+    `;
 }
-
-
-
 
 function checkType(post) {
   if (post.type == "note") {
     return "Заметка";
-  } else {
+  } else if (post.type == "Новость"){
     return "Новость";
   }
 }
-
-
-

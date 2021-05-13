@@ -1,18 +1,16 @@
-
+import {TransformService} from "../services/transform.service";
 export class Form {
   constructor(form, controls) {
-    this.form = form
-    this.controls = controls
-    console.log();
-    console.log("Form")
-    console.log(this.controls);
+    this.form = form;
+    this.controls = controls;
   }
 
   value() {
-    const value = {}
-    Object.keys(this.controls).forEach(control => {
-      value[control] = this.form[control].value
-    })
-    return value
+    // возвращает объект со значениями формы
+    const value = {};
+    TransformService.arrayKeys(this.controls).forEach((control) => {
+      value[control] = this.form[control].value;
+    });
+    return value;
   }
 }
