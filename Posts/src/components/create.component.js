@@ -20,8 +20,6 @@ export class CreateComponent extends Component {
 }
 
 async function submitHandler(event) {
-    const body = document.querySelector("body");
-    let points = null;
     event.preventDefault();
     const formData = {
         type: this.$el.type.value,
@@ -29,10 +27,7 @@ async function submitHandler(event) {
         date: moment().format("l"),
     };
     await apiService.createPost(formData);
-    points++;
-    const html = renderPost();
-    setTimeout(deleteMessage, 1000);
-    body.insertAdjacentHTML("afterbegin", html);
+    messageInsert();
 }
 
 function renderPost() {
@@ -43,25 +38,40 @@ function renderPost() {
     }
 
     return `
-    <div id = "message" style = "
-    display: flex;
-    position: fixed;
-    background-color: green;
-    border-radius: 11px;
-    right: 0;
-    top: 0;
-    z-index: 99999999999;
-    padding: 17px;
-    text-align: center;
-    transition: all 1s;
-    opacity: 1;
-   ">
-        <p>Вы создали пост. Сообщение пропадет через секунду</p>
+    <div id = "message" class = "message">
+        <p>Вы создали пост. Сообщение пропадет через 5 секунд</p>
     </div>
     `;
 }
 
 function deleteMessage() {
     const message = document.getElementById("message");
-    message.style.opacity = "0";
+    setTimeout(function () {
+        message.style.opacity = "0";
+    }, 5000);
+}
+
+function messageInsert() {
+    const body = document.querySelector("body");
+    const message = document.querySelector(".message");
+
+    if (messageIsInserted(message)) {
+        message.style.opacity = "1";
+        deleteMessage();
+        return;
+    }
+
+    const html = renderPost();
+    body.insertAdjacentHTML("afterbegin", html);
+    deleteMessage();
+}
+
+function messageIsInserted(message) {
+    if (message) {
+        return true;
+    }
+}
+
+function timer(time, callback) {
+    setInterval(callback, time);
 }
