@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
-    "start": "webpack-dev-server --mode development --open"
+    "start": "webpack serve --mode development --open"
   },
   "keywords": [
     "js",
@@ -16,20 +16,19 @@
   "author": "Orazov Tairlan",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.14.2",
-    "@babel/preset-env": "^7.14.2",
-    "babel-loader": "^8.2.2",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.4",
     "css-loader": "^5.2.4",
-    "html-webpack-externals-plugin": "^3.8.0",
-    "html-webpack-plugin": "^4.5.0",
+    "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.2"
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "moment": "^2.29.1"
+    "@babel/polyfill": "^7.2.5",
+    "moment": "^2.29.1",
+    "webpack-dev-server": "^3.11.2"
   }
 }
