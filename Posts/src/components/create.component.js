@@ -8,7 +8,6 @@ export class CreateComponent extends Component {
     constructor(id) {
         super(id);
     }
-
     init() {
         this.$el.addEventListener("submit", submitHandler.bind(this));
         this.form = new Form(this.$el, {

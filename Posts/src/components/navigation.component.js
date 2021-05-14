@@ -5,7 +5,6 @@ export class NavigationComponent extends Component {
         super(id);
         this.tabs = [];
     }
-
     init() {
         this.$el.addEventListener("click", tabClickHandler.bind(this));
     }
