@@ -1,7 +1,6 @@
 import { Component } from "../core/component";
 import { apiService } from "../services/api.service";
 import { TransformService } from "../services/transform.service";
-import moment from "moment";
 import { loader } from "../index";
 
 export class PostsComponent extends Component {
@@ -17,13 +16,9 @@ export class PostsComponent extends Component {
     loader.hide();
     this.$el.insertAdjacentHTML("afterbegin", html.join(" "));
   }
-
-  onHide() {
-    this.$el.innerHTML = "";
-  }
 }
 
-function renderPost(post) {
+export function renderPost(post) {
   return `
     <div class="panel" data-id = ${post.id}>
         <div class="panel-head">
