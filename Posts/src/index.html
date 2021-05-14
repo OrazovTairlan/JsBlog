@@ -17,8 +17,6 @@
     <h2 class="subtitle">Создавайте статьи и добавляйте их в избранное</h2>
     <a href="#js-smooth-scroll" class="get-started button button-primary button-large js-header-start">Приступить</a>
 </header>
-<div id="data-container"></div>
-<div id="pagination-container"></div>
 <section class="container w-container" id="js-smooth-scroll">
     <ul class="tabs" id="navigation">
         <li><a class="tab " href="#" data-name="posts">Посты</a></li>
@@ -30,8 +28,6 @@
     </div>
 
     <form id="create">
-        <div id="pagination1" class="tui-pagination"></div>
-        </div>
         <h1 class="h4">Создать новый пост</h1>
 
         <div class="form-control" id="title" data-isnormal="true">
@@ -58,10 +54,10 @@
         >Создать
         </button>
     </form>
+    <input id = "search-posts" placeholder = "Поиск" type = "text">
     <div id="posts" class="hide">
     </div>
     <div id="favorite" class="hide"></div>
-
 </section>
 </body>
 </html>
